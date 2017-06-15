@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+	<!-- 根路径 -->
+	<mapping path="/" decorator="/WEB-INF/decorator.jsp" />
+
+	<!-- 内容路径 -->
+	<mapping path="/*" decorator="/WEB-INF/decorator-iframe.jsp" />
+
+	<!-- <mapping path="/*/iframe/*" decorator="/WEB-INF/decorator-iframe.jsp" /> -->
+
+	<!-- Exclusion config -->
+	<!-- <mapping path="/*.jsp" exclue="true"/> -->
+	<mapping path="/login" exclue="true"/>
+	<mapping path="/static/*" exclue="true"/>
+	<mapping path="/kaptcha.jpg" exclue="true"/>
+</sitemesh>

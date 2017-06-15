@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Properties>
+		<property name="log_pattern">[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</property>
+		<property name="file_name">logs/oms.log</property>
+		<!-- <property name="rolling_file_name">logs/archetype-%d{yyyy-MM-dd}-%i.log.gz</property> -->
+		<property name="rolling_file_name">logs/oms-%d{yyyy-MM-dd}.log</property>
+		<property name="every_file_size">10M</property><!-- 日志切割的最小单位 -->
+		<property name="output_log_level">debug</property><!-- 日志输出级别 -->
+	</Properties>
+	<Appenders>
+		<RollingFile name="dailyfile" fileName="${file_name}"
+			filePattern="${rolling_file_name}">
+			<PatternLayout pattern="${log_pattern}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<!-- <SizeBasedTriggeringPolicy size="${every_file_size}"/> -->
+			</Policies>
+			<Filters>
+				<!-- <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/> -->
+				<ThresholdFilter level="info" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+		</RollingFile>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${log_pattern}" />
+			<Filters>
+				<!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+				<ThresholdFilter level="info" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+		</Console>
+		<Console name="debugconsole" target="SYSTEM_OUT">
+			<PatternLayout pattern="${log_pattern}" />
+			<Filters>
+				<!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
+				<ThresholdFilter level="debug" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<!-- 
+		<Logger name="org.springframework.transaction" level="${output_log_level}">
+			<AppenderRef ref="debugconsole" />
+		</Logger>
+		<Logger name="org.springframework.orm.jpa.JpaTransactionManager" level="${output_log_level}">
+			<AppenderRef ref="debugconsole" />
+		</Logger>
+		 -->
+		<Root level="${output_log_level}">
+			<AppenderRef ref="debugconsole" />
+			<AppenderRef ref="dailyfile" />
+		</Root>
+	</Loggers>
+</Configuration>

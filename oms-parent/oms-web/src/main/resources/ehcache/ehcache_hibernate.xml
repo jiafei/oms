@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache name="hibernate">
+	<diskStore path="java.io.tmpdir" />
+
+	<defaultCache maxEntriesLocalHeap="1000" eternal="false"
+		timeToIdleSeconds="3600" timeToLiveSeconds="3600" overflowToDisk="false">
+	</defaultCache>
+
+	<cache name="cn.flame.oms.common.security.entity.SysUser"
+		maxEntriesLocalHeap="2000" eternal="false" timeToIdleSeconds="3600"
+		timeToLiveSeconds="3600" overflowToDisk="false">
+	</cache>
+
+	<cache name="cn.flame.oms.common.security.entity.SysOrg"
+		maxEntriesLocalHeap="2000" eternal="false" timeToIdleSeconds="3600"
+		timeToLiveSeconds="3600" overflowToDisk="false">
+	</cache>
+
+	<cache name="cn.flame.oms.common.security.entity.SysPermission"
+		maxEntriesLocalHeap="2000" eternal="false" timeToIdleSeconds="3600"
+		timeToLiveSeconds="3600" overflowToDisk="false">
+	</cache>
+
+	<cache name="cn.flame.oms.common.security.entity.SysRole"
+		maxEntriesLocalHeap="2000" eternal="false" timeToIdleSeconds="3600"
+		timeToLiveSeconds="3600" overflowToDisk="false">
+	</cache>
+
+	<cache name="cn.flame.oms.common.security.entity.SysResource"
+		maxEntriesLocalHeap="2000" eternal="false" timeToIdleSeconds="3600"
+		timeToLiveSeconds="3600" overflowToDisk="false">
+	</cache>
+
+	<cache
+		name="cn.flame.oms.common.security.entity.SysRoleResourcePermission"
+		maxEntriesLocalHeap="2000" eternal="false" timeToIdleSeconds="3600"
+		timeToLiveSeconds="3600" overflowToDisk="false">
+	</cache>
+
+	<cache
+		name="cn.flame.oms.common.security.entity.SysRole.resourcePermissions"
+		maxEntriesLocalHeap="2000" eternal="false" timeToIdleSeconds="3600"
+		timeToLiveSeconds="3600" overflowToDisk="false">
+	</cache>
+
+	<cache name="cn.flame.oms.common.security.entity.SysAuth"
+		maxEntriesLocalHeap="2000" eternal="false" timeToIdleSeconds="3600"
+		timeToLiveSeconds="3600" overflowToDisk="false">
+	</cache>
+
+	<cache name="org.hibernate.cache.internal.StandardQueryCache"
+		maxEntriesLocalHeap="5000" eternal="false" timeToLiveSeconds="3600"
+		overflowToDisk="false" />
+
+	<cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+		maxEntriesLocalHeap="5000" eternal="true" overflowToDisk="true" />
+</ehcache>
